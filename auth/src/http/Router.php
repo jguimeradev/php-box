@@ -39,7 +39,7 @@ class Router
         }
     }
 
-    public function render(string $template, array|null $params): void
+    public function render(string $template, array|null $params = []): void
     {
         $path = __DIR__ . '/../views/' . $template . '.php';
 

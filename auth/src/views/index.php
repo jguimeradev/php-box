@@ -1,4 +1,5 @@
 <?php include 'includes/header.php'; ?>
+<?php var_dump($data); ?>
 
 <body>
 

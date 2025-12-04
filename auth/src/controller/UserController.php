@@ -9,14 +9,16 @@ class UserController
 {
     public function index(Router $router)
     {
-        $router->render('index', null);
+        $data = UserModel::all();
+        $router->render('index', ['data' => $data]);
     }
 
     public function save(Router $router)
     {
-        if (isset($_POST)) {
+        /*   if (isset($_POST)) {
             $user = new UserModel($_POST);
             $user->all();
-        }
+            $router->render('index', null);
+        } */
     }
 }

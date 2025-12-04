@@ -2,6 +2,7 @@
 
 namespace Debian\Php\auth\src\model;
 
+use PDO;
 use Debian\Php\auth\src\data\DBConnection;
 
 
@@ -13,15 +14,17 @@ class UserModel
         $pdo = $this->connectDB()->getConnection();
     }
 
-    public function connectDB(): DBConnection
+    public static function connectDB(): DBConnection
     {
         return $db = DBConnection::getInstance();
     }
 
-    public function all()
+    public static function all(): array
     {
-        $pdo = $this->connectDB()->getConnection();
-        $pdo->exec("SELECT * FROM users");
+        $pdo = self::connectDB()->getConnection();
+        $res = $pdo->query("SELECT * FROM users");
+        $data = $res->fetchAll(PDO::FETCH_OBJ);
+        return $data;
     }
 
     public function create(): void {}
