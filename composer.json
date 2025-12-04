@@ -1,0 +1,22 @@
+{
+    "name": "debian/php",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "Debian\\Php\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "jguimeradev",
+            "email": "jguimeradev@gmail.com"
+        }
+    ],
+    "scripts": {
+        "dev" :  "php -S localhost:6969 -t auth/public/"
+    },
+    "config": {
+        "process-timeout": 0
+    },
+    "require": {}
+}

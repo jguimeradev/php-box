@@ -1,0 +1,60 @@
+:root {
+            --bg: #ffffff;
+            --card-bg: #f8f9fa;
+            --text: #212529;
+            --muted: #6c757d;
+            --input-bg: #ffffff;
+            --input-border: #ced4da;
+            --accent: #0d6efd;
+
+        }
+
+        [data-theme="dark"] {
+            --bg: #0b1220;
+            --card-bg: #111a2d;
+            --text: #e9eef8;
+            --muted: #96a3b8;
+            --input-bg: #0f1524;
+            --input-border: #2b3b54;
+            --accent: #66b2ff;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: system-ui, sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 430px;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 1px solid var(--input-border);
+            background: var(--card-bg);
+            color: var(--text);
+        }
+
+        input.form-control {
+            background: var(--input-bg);
+            border-color: var(--input-border);
+            color: var(--text);
+        }
+
+        input::placeholder{
+            color: #fff;
+        }
+
+        

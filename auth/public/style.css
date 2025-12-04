@@ -1,0 +1,241 @@
+/* styles.css
+   Shared stylesheet for login.html, signup.html, index.html
+   -------------------------
+   - Theme variables (light / dark) using [data-theme] on <html>
+   - Layout and SaaS-style components (navbar, sidebar, cards)
+   - Table + CRUD controls
+   - Small utilities to keep pages consistent
+*/
+
+/* ---------------- Theme variables ---------------- */
+:root {
+    --bg: #ffffff;
+    --surface: #f8f9fa;
+    --muted: #6c757d;
+    --text: #212529;
+    --accent: #0d6efd;
+    --success: #198754;
+    --danger: #dc3545;
+    --card-shadow: 0 8px 28px rgba(2, 6, 23, 0.08);
+    --input-bg: #ffffff;
+    --input-border: #ced4da;
+    --table-border: #dee2e6;
+}
+
+[data-theme="dark"] {
+    --bg: #0b1220;
+    --surface: #0f1624;
+    --muted: #96a3b8;
+    --text: #e9eef8;
+    --accent: #66b2ff;
+    --success: #4dd79a;
+    --danger: #ff7b88;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    --input-bg: #0b1220;
+    --input-border: #233044;
+    --table-border: #273645;
+}
+
+
+
+.auth-card {
+    width: 100%;
+    max-width: 430px;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: 1px solid var(--input-border);
+    background: var(--card-bg);
+    color: var(--text);
+}
+
+input.form-control {
+    background: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--text);
+}
+
+input::placeholder {
+    color: #fff;
+}
+
+
+
+/* ---------------- Global layout ---------------- */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Navbar (top) */
+.topbar {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+    border-bottom: 1px solid var(--input-border);
+    z-index: 1030;
+}
+
+/* SaaS grid: sidebar + content */
+.app-shell {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    min-height: calc(100vh - 56px);
+    /* subtract navbar height if using fixed-top */
+    gap: 24px;
+    padding: 28px;
+}
+
+/* Sidebar */
+.sidebar {
+    background: var(--surface);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    height: fit-content;
+}
+
+.sidebar .brand {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+}
+
+.sidebar nav a {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: var(--text);
+    text-decoration: none;
+    margin-bottom: 6px;
+}
+
+.sidebar nav a.active {
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* Content area */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Generic card used across pages */
+.card-surface {
+    background: var(--surface);
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid transparent;
+}
+
+/* Auth card specific (login/signup) */
+.auth-center {
+    max-width: 480px;
+    margin: 48px auto;
+    padding: 28px;
+    border-radius: 12px;
+    background: var(--surface);
+    box-shadow: var(--card-shadow);
+}
+
+/* Inputs override to match theme */
+.form-control,
+.form-select,
+.form-check-input {
+    background: var(--input-bg);
+    color: var(--text);
+    border-color: var(--input-border);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.btn-outline-primary {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Theme toggle (small) */
+.theme-toggle {
+    border: 1px solid var(--input-border);
+    background: var(--surface);
+    color: var(--text);
+}
+
+/* Table styling */
+.table thead {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"] .table thead {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.table th,
+.table td {
+    border-color: var(--table-border) !important;
+}
+
+/* CRUD action buttons */
+.table .btn-sm {
+    padding: .25rem .45rem;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .app-shell {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .auth-center {
+        margin: 24px 12px;
+    }
+}
+
+/* Small utilities */
+.muted {
+    color: var(--muted);
+}
+
+.small {
+    font-size: .875rem;
+}
+
+.text-accent {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* Modal tweaks */
+.modal-backdrop.show {
+    background-color: rgba(2, 6, 23, 0.45);
+}
