@@ -9,6 +9,7 @@ use Debian\Php\auth\src\data\DBConnection;
 class UserModel
 {
     public $db;
+    private array $errors = [];
     public function __construct(public array $args)
     {
         $pdo = $this->connectDB()->getConnection();
@@ -27,7 +28,22 @@ class UserModel
         return $data;
     }
 
-    public function create(): void {}
+    public static function findByEmail()
+    {
+        $pdo = self::connectDB()->getConnection();
+        $res = $pdo->query("SELECT * FROM users");
+        $data = $res->fetchAll(PDO::FETCH_OBJ);
+        return $data;
+    }
+
+    public function create(): array
+    {
+        self::findByEmail();
+        return $this->errors;
+    }
+
+
+
     public function read(): void {}
     public function update(): void {}
     public function delete(): void {}

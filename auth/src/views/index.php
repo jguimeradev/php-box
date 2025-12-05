@@ -1,5 +1,5 @@
 <?php include 'includes/header.php'; ?>
-<?php var_dump($data); ?>
+
 
 <body>
 
@@ -61,49 +61,26 @@
                         <table class="table table-hover align-middle" id="usersTable">
                             <thead>
                                 <tr>
-                                    <th style="width:60px">#</th>
+                                    <th style="width:60px">ID</th>
                                     <th>Full name</th>
                                     <th>Email</th>
                                     <th>Role</th>
-                                    <th>Created</th>
-                                    <th style="width:180px">Actions</th>
+                                    <th style="width:180px">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Rows will be managed by the demo JS. Initial sample rows inserted by HTML for progressive enhancement. -->
-                                <tr data-id="1">
-                                    <td>1</td>
-                                    <td>Jane Doe</td>
-                                    <td>jane@example.com</td>
-                                    <td>User</td>
-                                    <td>2025-01-03</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-outline-primary editBtn">Edit</button>
-                                        <button class="btn btn-sm btn-outline-danger deleteBtn">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr data-id="2">
-                                    <td>2</td>
-                                    <td>John Smith</td>
-                                    <td>john.smith@example.com</td>
-                                    <td>Admin</td>
-                                    <td>2025-02-11</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-outline-primary editBtn">Edit</button>
-                                        <button class="btn btn-sm btn-outline-danger deleteBtn">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr data-id="3">
-                                    <td>3</td>
-                                    <td>Ana Torres</td>
-                                    <td>ana.torres@example.com</td>
-                                    <td>User</td>
-                                    <td>2025-02-20</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-outline-primary editBtn">Edit</button>
-                                        <button class="btn btn-sm btn-outline-danger deleteBtn">Delete</button>
-                                    </td>
-                                </tr>
+                                <?php foreach ($data as $item) { ?>
+                                    <tr data-id=<?= $item->id; ?>>
+                                        <td><?= $item->id; ?></td>
+                                        <td><?= $item->full_name; ?></td>
+                                        <td><?= $item->email; ?></td>
+                                        <td><?= $item->role; ?></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary editBtn">Edit</button>
+                                            <button class="btn btn-sm btn-outline-danger deleteBtn">Delete</button>
+                                        </td>
+                                    </tr>
+                                <?php }; ?>
                             </tbody>
                         </table>
                     </div>
