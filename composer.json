@@ -13,10 +13,13 @@
         }
     ],
     "scripts": {
-        "dev" :  "php -S localhost:6969 -t auth/public/"
+        "dev" :  "php -S localhost:6969 -t auth/public/",
+        "test": "cd auth && phpunit"
     },
     "config": {
         "process-timeout": 0
     },
-    "require": {}
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    }
 }
