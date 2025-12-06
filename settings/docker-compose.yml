@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  php-box:
+    build: .
+    container_name: php-box-dev
+    ports:
+      - "6969:6969"
+    volumes:
+      - .:/app
+      - ./auth/src/database:/app/auth/src/database
+    environment:
+      - PHP_ENV=development
+      - PHP_DISPLAY_ERRORS=1
+    working_dir: /app
+    command: php -S 0.0.0.0:6969 -t auth/public/
+
+  # Optional: Database management with DB Browser
+  db-browser:
+    image: phpmyadmin
+    container_name: php-box-db-browser
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: localhost
+    depends_on:
+      - php-box
