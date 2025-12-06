@@ -12,7 +12,13 @@
             </div>
         </div>
     </nav>
-
+    <?php if (!empty($errors)): ?>
+        <div class="alert alert-danger">
+            <?php foreach ($errors as $error): ?>
+                <p><?= htmlspecialchars($error) ?></p>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
     <!-- Content -->
     <main class="container" style="padding-top:90px;">
         <section class="auth-center">

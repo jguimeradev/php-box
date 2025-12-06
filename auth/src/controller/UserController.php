@@ -15,12 +15,15 @@ class UserController
 
     public function save(Router $router)
     {
-        //el controlador solo maneja qué hacer una vez se realiza el save en el modelo. Es el modelo el que se encarga de la validación
 
         if (isset($_POST)) {
             $user = new UserModel($_POST);
-            $res = $user->create();
-            $router->render('index', null);
+            $errors = $user->create();
+            if (empty($errors)) {
+                $router->render('index', ['data' => UserModel::all()]);
+            } else {
+                $router->render('signup', ['errors' => $errors]);
+            }
         }
     }
 }
