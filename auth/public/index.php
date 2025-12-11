@@ -14,8 +14,8 @@ $router = new Router;
 
 $router->get('/', [new UserController(), 'index']);
 $router->get('/signup', fn() => $router->render('signup', null));
-$router->get('/login', fn() => $router->render('login', null));
-$router->post('/login', [new UserController(), 'save']);
+$router->post('/signup', [new UserController(), 'save']);
+//$router->post('/signup', [new UserController(), 'save']); 
 
 
 $router->dispatch();

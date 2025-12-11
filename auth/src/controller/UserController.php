@@ -7,13 +7,13 @@ use Debian\Php\auth\src\http\Router;
 
 class UserController
 {
-    public function index(Router $router)
+    public function index(Router $router): void
     {
         $data = UserModel::all();
         $router->render('index', ['data' => $data]);
     }
 
-    public function save(Router $router)
+    public function save(Router $router): void
     {
 
         if (isset($_POST)) {
@@ -26,4 +26,5 @@ class UserController
             }
         }
     }
+
 }

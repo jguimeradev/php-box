@@ -20,22 +20,22 @@
             <h3 class="mb-2">Log in</h3>
             <p class="muted small mb-4">Access your account using email and password.</p>
 
-            <form id="loginForm" method="POST">
+            <form id="loginForm" method="POST" action="/login">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input id="email" class="form-control" type="email" placeholder="you@example.com" />
+                    <input id="email" name="email" class="form-control" type="email" placeholder="you@example.com" />
                     <div class="invalid-feedback">Please enter a valid email.</div>
                 </div>
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input id="password" class="form-control" type="password" minlength="6" placeholder="••••••••" />
+                    <input id="password" name="password" class="form-control" type="password" minlength="6" placeholder="••••••••" />
                     <div class="invalid-feedback">Password (min 6 characters).</div>
                 </div>
 
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="remember">
+                        <input class="form-check-input" name="remember" type="checkbox" id="remember">
                         <label class="form-check-label muted small" for="remember">Remember me</label>
                     </div>
                     <a href="#" class="small">Forgot password?</a>

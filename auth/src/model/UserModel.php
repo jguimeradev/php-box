@@ -9,11 +9,13 @@ use Debian\Php\auth\src\data\DBConnection;
 class UserModel
 {
     private array $errors = [];
+    private array $args;
     private PDO $pdo;
 
-    public function __construct(public array $args = [], ?PDO $pdo = null)
+    public function __construct(array $args, ?PDO $pdo = null)
     {
         // Allow dependency injection for testing, otherwise use singleton
+        $this->args = $args;
         $this->pdo = $pdo ?? self::connectDB()->getConnection();
     }
 
